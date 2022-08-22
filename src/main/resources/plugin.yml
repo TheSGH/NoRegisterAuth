@@ -1,0 +1,5 @@
+name: NoRegisterAuth
+version: '${version}'
+main: com.theloneguy.plugins.noregisterauth.NoRegisterAuth
+api-version: 1.13
+authors: [ TheSGH ]
