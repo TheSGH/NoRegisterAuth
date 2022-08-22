@@ -6,6 +6,7 @@ import com.theloneguy.plugins.noregisterauth.DataBase.Mongo;
 import org.bson.Document;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 
@@ -14,7 +15,7 @@ import java.net.UnknownHostException;
 
 public class Join implements Listener {
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void OnJoinListener(AsyncPlayerPreLoginEvent e) {
 
         String name = e.getName();
@@ -36,11 +37,19 @@ public class Join implements Listener {
 
         String mongo_CaSeSeNsEtIvE_name = (String) mongores.get("name");
         String mongo_name = (String) mongores.get("username");
+        String mongo_ip = (String) mongores.get("loginip");
         Inet4Address mongo_login_ip = null;
 
+
+        if (mongo_ip == null) {
+            e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, ChatColor.RED + "No Session Found !");
+            return;
+        }
+
         try {
-            mongo_login_ip = (Inet4Address) Inet4Address.getByName(mongores.get("loginip").toString());
+            mongo_login_ip = (Inet4Address) Inet4Address.getByName(mongo_ip);
         } catch (UnknownHostException ex) {
+            e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, ChatColor.RED + "No Session Found !");
             throw new RuntimeException(ex);
         }
 

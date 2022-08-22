@@ -33,8 +33,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           generate_release_notes: true
-          name: NoRegisterAuth v${{ env.PLUGIN_VERSION }}
-          tag_name: VR${{ env.PLUGIN_VERSION }}RN${{ github.run_number }}RA${{ github.run_attempt }}
+          name: NoRegisterAuth v${{ env.PLUGIN_VERSION }}-${{ github.run_number }}
+          tag_name: V${{ env.PLUGIN_VERSION }}RN${{ github.run_number }}RA${{ github.run_attempt }}
           files: NoRegisterAuth-${{ env.PLUGIN_VERSION }}.jar
 
   build:
