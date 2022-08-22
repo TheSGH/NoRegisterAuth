@@ -34,7 +34,7 @@ jobs:
         with:
           generate_release_notes: true
           name: NoRegisterAuth v${{ env.PLUGIN_VERSION }}-${{ github.run_number }}
-          tag_name: V${{ env.PLUGIN_VERSION }}R${{ github.run_number }}A${{ github.run_attempt }}
+          tag_name: v${{ env.PLUGIN_VERSION }}-R${{ github.run_number }}+A${{ github.run_attempt }}
           files: NoRegisterAuth-${{ env.PLUGIN_VERSION }}.jar
 
   build:
