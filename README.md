@@ -1,2 +1,2 @@
 # NoRegisterAuth
- A Minecraft Login Plugin Alternative -- short for AMLPA
+ A Minecraft Login Plugin Alternative
